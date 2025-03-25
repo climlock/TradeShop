@@ -27,7 +27,7 @@
     <div class="container">
         <a class="navbar-brand fw-bold" href="/">TradeShop</a>
         <div>
-            <span class="me-3 fw-semibold">Вітаємо, ${user.name}</span>
+            <span class="me-3 fw-semibold">Вітаємо, ${currentUser.name}</span>
             <a href="/product/create" class="btn btn-primary btn-sm ms-2">Створити оголошення</a>
             <form action="/logout" method="post" class="d-inline ms-2">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
@@ -37,7 +37,7 @@
     </div>
 </nav>
 
-<#if user.email??>
+<#if currentUser.email??>
     <div class="container">
         <div class="card p-4 shadow mx-auto" style="max-width: 700px;">
             <h4 class="mb-4">Створити нове оголошення</h4>

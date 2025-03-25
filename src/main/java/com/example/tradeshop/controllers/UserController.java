@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
+
 @Controller
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
+    private final ProductService productService;
 
     @GetMapping("/login")
     public String login() {
@@ -40,9 +43,10 @@ public class UserController {
         return "hello";
     }
     @GetMapping("/user/{user}")
-    public String userInfo(@PathVariable("user") User user, Model model ) {
-        model.addAttribute("user", user);
-        model.addAttribute("products", user.getProducts());
+    public String userInfo(@PathVariable("user") User profileUser, Model model, Principal principal) {
+        model.addAttribute("profileUser", profileUser);
+        model.addAttribute("products", profileUser.getProducts());
+        model.addAttribute("currentUser", productService.getUserByPrincipal(principal));
         return "user-info";
     }
 

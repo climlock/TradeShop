@@ -68,23 +68,24 @@
     </style>
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="/">TradeShop</a>
-        <div>
-            <#if user.email??>
-                <a href="/product/create/" class="btn btn-primary btn-sm ms-2">Створити оголошення</a>
-                <form action="/logout" method="post" class="d-inline ms-2">
-                    <input type="hidden" name="_csrf" value="${_csrf.token}">
-                    <button type="submit" class="btn btn-outline-danger btn-sm">Вийти з акаунту</button>
-                </form>
-                <#else>
-                    <a href="/login" class="btn btn-primary">Увійти в обліковий запис</a>
-            </#if>
-        </div>
-    </div>
-</nav>
+<#assign searchFild=true>
+<#include "fragments/navbar.ftl">
+<#--<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">-->
+<#--    <div class="container">-->
+<#--        <a class="navbar-brand fw-bold" href="/">TradeShop</a>-->
+<#--        <div>-->
+<#--            <#if user.email??>-->
+<#--                <a href="/product/create/" class="btn btn-primary btn-sm ms-2">Створити оголошення</a>-->
+<#--                <form action="/logout" method="post" class="d-inline ms-2">-->
+<#--                    <input type="hidden" name="_csrf" value="${_csrf.token}">-->
+<#--                    <button type="submit" class="btn btn-outline-danger btn-sm">Вийти з акаунту</button>-->
+<#--                </form>-->
+<#--                <#else>-->
+<#--                    <a href="/login" class="btn btn-primary">Увійти в обліковий запис</a>-->
+<#--            </#if>-->
+<#--        </div>-->
+<#--    </div>-->
+<#--</nav>-->
 
 <div class="container">
     <div class="product-card">

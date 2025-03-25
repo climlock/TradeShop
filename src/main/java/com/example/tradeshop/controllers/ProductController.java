@@ -23,14 +23,14 @@ public class ProductController {
     @GetMapping("/")
     public String products( Model model, Principal principal) {
         model.addAttribute("products", productService.getAllProducts());
-        model.addAttribute("user", productService.getUserByPrincipal(principal));
+        model.addAttribute("currentUser", productService.getUserByPrincipal(principal));
         return "products";
     }
 
     @GetMapping("/search")
     public String searchProducts(@RequestParam(name = "title") String title, Model model, Principal principal) {
         model.addAttribute("products", productService.getProductByTitle(title));
-        model.addAttribute("user", productService.getUserByPrincipal(principal));
+        model.addAttribute("currentUser", productService.getUserByPrincipal(principal));
         return "products";
     }
 
@@ -39,7 +39,7 @@ public class ProductController {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
         model.addAttribute("images", product.getImages());
-        model.addAttribute("user", productService.getUserByPrincipal(principal));
+        model.addAttribute("currentUser", productService.getUserByPrincipal(principal));
 
         return "product-info";
     }
@@ -63,7 +63,7 @@ public class ProductController {
     }
     @GetMapping("/product/create")
     public String productCreateForm(Model model, Principal principal) {
-        model.addAttribute("user", productService.getUserByPrincipal(principal));
+        model.addAttribute("currentUser", productService.getUserByPrincipal(principal));
         return "product-create";
     }
 }
